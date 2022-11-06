@@ -1,0 +1,14 @@
+body{
+  background-color: gray;
+}
+.btn{
+  padding-left: 5px;
+  padding-right: 5px;
+  width: 80px;
+  border-radius: 5px;
+  border-width: 0.3px;
+  background-color: gray;
+  border-color: rgba(143, 141, 141, 0.877);
+  box-shadow: none;
+
+}

@@ -2,8 +2,16 @@ window.onload= function(){
   var searchBtn= document.querySelector('.btn');
   searchBtn.addEventListener('click', function(element){
     element.preventDefault();
-
-    fetch("superheroes.php")
+    var name= document.querySelector(".searchForm input.name");
+    console.log(name);
+    name=name.value;
+    console.log(name);
+    var heroes= document.querySelector(".heroes");
+    heroes.innerHTML=""
+    
+    url='superheroes.php?query=' +  name;
+  
+    fetch(url, {method:'POST'})
       .then(response => {
         if(response.ok){
           return response.text()
@@ -12,7 +20,14 @@ window.onload= function(){
         }
       })
       .then(data=>{
-          alert(data);
+        
+        if(typeof data === "object"){
+          heroes.innerHTML=data;   
+        }else{
+          heroes.innerHTML = "<p class='text-uppercase error text-bold'>" +  data + "</p>";
+        }
+      });
+        
+         
       })
-  })
-}
+  };
